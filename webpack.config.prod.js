@@ -16,16 +16,19 @@ module.exports = {
     }),
   ],
   module: {
-    rules: [{
-      test: /\.css$/i,
-      use: [{
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            publicPath: "../"
-          }
-        },
-        "css-loader"
-      ]
-    }]
+    rules: [
+      ...base.module.rules,
+      {
+        test: /\.css$/i,
+        use: [{
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "../"
+            }
+          },
+          "css-loader"
+        ]
+      }
+    ]
   }
 };
