@@ -59,7 +59,7 @@ npx webpack --help
 - plugin(插件): 扩展 webpack 功能，n 个 css 文件合并为一个文件
 - loader(加载器): 加载 webpack 文件，一对一的文件对应关系
 
-### scss-loader 和 dart-scss(node-sass 已过时)
+### sass-loader 和 dart-sass(node-sass 已过时)
 
 ```
 yarn add sass-loader dart-sass --dev
@@ -68,7 +68,19 @@ yarn add sass-loader dart-sass --dev
 - 在 base 中添加配置让 webpack 使用 dart-sass
 
 ```
-yarn add sass-loader dart-loader --dev
+{
+  test: /\.scss$/i,
+  use: [
+    'style-loader',
+    'css-loader',
+    {
+      loader: 'sass-loader',
+      options: {
+        implementation: require('dart-sass')
+      }
+    }
+  ]
+}
 ```
 
 ### less-loader
